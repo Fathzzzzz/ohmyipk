@@ -1,0 +1,68 @@
+// ERD: USER 1-N STUDY_PLAN 1-N SEMESTER 1-N COURSE N-1 GRADE_SCALE.
+// Derived results (IPS/IPK/predictions) are deliberately NOT stored; they are
+// always recomputed from COURSE rows by the shared calc engine.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String      @id @default(cuid())
+  email        String      @unique
+  name         String
+  passwordHash String
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+  studyPlans   StudyPlan[]
+}
+
+model StudyPlan {
+  id                String     @id @default(cuid())
+  userId            String
+  user              User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name              String
+  totalCreditsTarget Int       @default(144)
+  ipkTarget         Float      @default(3.5)
+  createdAt         DateTime   @default(now())
+  updatedAt         DateTime   @updatedAt
+  semesters         Semester[]
+
+  @@index([userId])
+}
+
+model Semester {
+  id        String    @id @default(cuid())
+  planId    String
+  plan      StudyPlan @relation(fields: [planId], references: [id], onDelete: Cascade)
+  term      Int
+  label     String?
+  ipsTarget Float?
+  courses   Course[]
+
+  @@unique([planId, term])
+  @@index([planId])
+}
+
+model Course {
+  id         String     @id @default(cuid())
+  semesterId String
+  semester   Semester   @relation(fields: [semesterId], references: [id], onDelete: Cascade)
+  name       String
+  credits    Int
+  grade      String?
+  gradeScale GradeScale? @relation(fields: [grade], references: [letter], onDelete: Restrict)
+
+  @@index([semesterId])
+}
+
+model GradeScale {
+  letter    String   @id
+  weight    Int
+  sortOrder Int
+  courses   Course[]
+}

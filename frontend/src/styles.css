@@ -1,0 +1,283 @@
+:root {
+  --bg: #0f1216;
+  --surface: #171c22;
+  --surface-2: #1e2530;
+  --border: #2a3340;
+  --fg: #e6ebf2;
+  --muted: #8b98a8;
+  --accent: #4f8cff;
+  --success: #2ecc71;
+  --warning: #f5a623;
+  --error: #ff5566;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0 0 0.5rem;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--fg);
+  padding: 0.4rem 0.75rem;
+  border-radius: 6px;
+}
+
+button:hover {
+  border-color: var(--accent);
+}
+
+button.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+button.ghost {
+  background: transparent;
+  border-color: transparent;
+  color: var(--muted);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+input,
+select {
+  font: inherit;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  color: var(--fg);
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.center {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.shell {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1.25rem;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  align-items: flex-end;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+label.inline {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.error {
+  color: var(--error);
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 380px;
+}
+
+.auth-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.tab {
+  display: flex;
+  gap: 0.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.tab button.active {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.plan-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.plan-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--fg);
+}
+
+.badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+}
+
+.badge-aman {
+  color: var(--success);
+  border-color: var(--success);
+}
+
+.badge-ketat {
+  color: var(--warning);
+  border-color: var(--warning);
+}
+
+.badge-gagal {
+  color: var(--error);
+  border-color: var(--error);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.6rem;
+}
+
+.stat {
+  background: var(--surface-2);
+  border-radius: 8px;
+  padding: 0.6rem 0.75rem;
+}
+
+.stat .k {
+  font-size: 0.75rem;
+  color: var(--muted);
+  display: block;
+}
+
+.stat .v {
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+table.courses {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table.courses th,
+table.courses td {
+  text-align: left;
+  padding: 0.4rem 0.5rem;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9rem;
+}
+
+table.courses th {
+  color: var(--muted);
+  font-weight: 500;
+  font-size: 0.78rem;
+}
+
+.sem-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  gap: 0.5rem;
+}
+
+.combo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.combo-pill {
+  font-size: 0.8rem;
+  border-radius: 6px;
+  padding: 0.15rem 0.45rem;
+  border: 1px solid var(--border);
+}
+
+.pass {
+  color: var(--success);
+  border-color: var(--success);
+}
+
+.fail {
+  color: var(--warning);
+  border-color: var(--warning);
+}
+
+.small {
+  font-size: 0.82rem;
+}
+
+.mt {
+  margin-top: 0.6rem;
+}

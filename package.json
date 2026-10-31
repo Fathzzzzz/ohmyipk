@@ -1,0 +1,21 @@
+{
+  "name": "ohmyipk",
+  "version": "0.1.0",
+  "private": true,
+  "description": "GPA planner & predictor for a 144-SKS undergraduate (IPK target, IPS target, what-if).",
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "scripts": {
+    "build": "npm run build -w @ohmyipk/backend && npm run build -w @ohmyipk/frontend",
+    "test": "npm run test -w @ohmyipk/backend",
+    "dev:backend": "npm run dev -w @ohmyipk/backend",
+    "dev:frontend": "npm run dev -w @ohmyipk/frontend",
+    "db:migrate": "npm run db:migrate -w @ohmyipk/backend",
+    "db:seed": "npm run db:seed -w @ohmyipk/backend"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
